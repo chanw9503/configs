@@ -1,0 +1,25 @@
+{
+  "name": "@chanwoopark/configs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "build": "ultra -r build",
+    "release": "pnpm changeset publish",
+    "version": "changeset version && pnpm install --no-immutable"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@changesets/cli": "^2.27.11",
+    "nanobundle": "^2.1.0",
+    "ultra-runner": "^3.10.5"
+  },
+  "ultra": {
+    "concurrent": [
+      "build"
+    ]
+  }
+}
