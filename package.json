@@ -10,7 +10,7 @@
     "build": "ultra -r build",
     "release": "pnpm changeset publish --no-git-checks",
     "ci:publish": "pnpm publish --access public",
-    "ci:version": "changeset version && pnpm install"
+    "ci:version": "changeset version"
   },
   "keywords": [],
   "author": "",
