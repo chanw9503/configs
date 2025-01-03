@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "ultra -r build",
     "release": "pnpm changeset publish",
