@@ -1,14 +1,14 @@
 module.exports = {
-  plugin: ['@chanwoo'],
-  extends: ['plugin:chanwoo/base'],
+  plugin: ['@chanwoopark'],
+  extends: ['plugin:@chanwoopark/base'],
   overrides: [
     {
       files: ['**/*.ts?(x)'],
-      extends: ['plugin:@chanwoo/typescript'],
+      extends: ['plugin:@chanwoopark/typescript'],
     },
     {
       files: ['**/*.{jsx,tsx}'],
-      extends: ['plugin:@chanwoo/react'],
+      extends: ['plugin:@chanwoopark/react'],
     },
     {
       files: ['**/*.tsx'],
