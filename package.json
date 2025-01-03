@@ -1,6 +1,6 @@
 {
   "name": "@chanwoopark/configs",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "publishConfig": {
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ultra -r build",
     "release": "pnpm changeset publish",
-    "version": "changeset version && pnpm install --no-immutable"
+    "version": "changeset version && pnpm install"
   },
   "keywords": [],
   "author": "",

@@ -1,54 +1,38 @@
-name: Release Packages
-
+name: Changesets
 on:
   push:
     branches:
       - main
-
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
 jobs:
-  release:
-    name: Release Packages
+  version:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
     steps:
-      - name: Checkout Repo
+      - name: checkout code repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Setup Node.js 18.x
+      - name: setup node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Configure NPM Auth Token
-        run: |
-          echo "@chanwoo:registry=https://registry.npmjs.org/" >> ~/.npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ~/.npmrc
-
-      - name: Use cached dependencies
-        uses: actions/cache@v3
+      - name: install pnpm
+        run: npm i pnpm@latest -g
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > .npmrc
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+      - name: install dependencies
+        run: pnpm install
+      - name: create and publish versions
+        uses: changesets/action@v1
         with:
-          path: |
-            node_modules
-            ~/.pnpm-store
-          key: pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-
-
-      - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Build
-        run: pnpm build
-
-      - name: Publish to NPM
-        run: pnpm changeset publish
+          version: pnpm ci:version
+          commit: 'chore: update versions'
+          title: 'chore: update versions'
+          publish: pnpm ci:publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
