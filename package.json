@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "ultra -r build",
-    "release": "pnpm changeset publish --no-git-checks",
+    "release": "pnpm changeset publish",
     "ci:publish": "pnpm publish --access public",
     "ci:version": "changeset version"
   },
