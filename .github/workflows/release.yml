@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Use cached dependencies
         uses: actions/cache@v3
         with:
