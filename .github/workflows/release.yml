@@ -30,7 +30,7 @@ jobs:
       - name: Configure NPM Auth Token
         run: |
           echo "@chanwoo:registry=https://registry.npmjs.org/" >> ~/.npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ~/.npmrc
 
       - name: Use cached dependencies
         uses: actions/cache@v3
