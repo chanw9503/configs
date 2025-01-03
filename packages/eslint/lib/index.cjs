@@ -7,16 +7,16 @@ var __commonJS = (cb, mod) => function __require() {
 var require_auto = __commonJS({
   "src/auto.js"(exports2, module2) {
     module2.exports = {
-      plugin: ["@chanwoo"],
-      extends: ["plugin:chanwoo/base"],
+      plugin: ["@chanwoopark"],
+      extends: ["plugin:@chanwoopark/base"],
       overrides: [
         {
           files: ["**/*.ts?(x)"],
-          extends: ["plugin:@chanwoo/typescript"]
+          extends: ["plugin:@chanwoopark/typescript"]
         },
         {
           files: ["**/*.{jsx,tsx}"],
-          extends: ["plugin:@chanwoo/react"]
+          extends: ["plugin:@chanwoopark/react"]
         },
         {
           files: ["**/*.tsx"],
@@ -45,7 +45,7 @@ var require_base = __commonJS({
         {
           singleQuote: false,
           semi: true,
-          tabWidth: 2,
+          tabWidth: 3,
           useTabs: false,
           trailingComma: "all",
           printWidth: 100,
